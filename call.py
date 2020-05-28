@@ -33,9 +33,26 @@ ys = []
 
 
 
+for x in xs:for x in xs:
+    u.setValue(x)
+    ys.append(call.NPV())
+
+ax.set_title("Option Value")
+_ = ax.plot(xs, ys)
+plot.show()
+
+
+
+f, ax = plot.subplots()
+xs = np.linspace(100.00, 40000.00)
+ys = []
+
+
+
+
 for x in xs:
     u.setValue(x)
-    ys.append(option.NPV())
+    ys.append(put.NPV())
 
 ax.set_title("Option Value")
 _ = ax.plot(xs, ys)
