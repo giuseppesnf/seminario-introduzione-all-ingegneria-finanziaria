@@ -4,7 +4,8 @@ import numpy as np
 
 today = Date(27, September, 2019)
 Settings.instance().evaluationDate = today
-option = EuropeanOption(PlainVanillaPayoff(Option.Call, 50000), EuropeanExercise(Date(27, September, 2024)))
+option = EuropeanOption(PlainVanillaPayoff(Option.Call, 106404.15), EuropeanExercise(Date(27, September, 2024)))
+put = EuropeanOption(PlainVanillaPayoff(Option.Put, 106404.15), EuropeanExercise(Date(27, September, 2024)))
 
 u = SimpleQuote(259594.0)
 r = SimpleQuote(0.0169)
@@ -17,13 +18,22 @@ process = BlackScholesProcess(QuoteHandle(u), YieldTermStructureHandle(riskFreeC
 
 engine = AnalyticEuropeanEngine(process)
 
-option.setPricingEngine(engine)
+call.setPricingEngine(engine)
 
-print(option.NPV())
-print(option.delta())
-print(option.gamma())
-print(option.vega())
+print(call.NPV())
+print(call.delta())
+print(call.gamma())
+print(call.vega())
 
+put.setPricingEngine(engine)
+
+print(put.NPV())
+print(put.delta())
+print(put.gamma())
+print(put.vega())
+
+c = (call.NPV())
+p = (put.NPV())
 
 
 f, ax = plot.subplots()
