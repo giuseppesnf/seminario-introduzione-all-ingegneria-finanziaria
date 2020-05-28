@@ -55,3 +55,12 @@ engine = MCEuropeanEngine(process, "PseudoRandom",
                           requiredSamples=250000)
 option.setPricingEngine(engine)
 print(option.NPV())
+
+# ...
+
+c = (call.NPV())
+p = (option.NPV())
+A0 = 193984
+PVK = 38129
+
+# modello put call parity
