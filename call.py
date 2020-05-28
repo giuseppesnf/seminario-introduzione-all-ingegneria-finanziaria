@@ -4,7 +4,7 @@ import numpy as np
 
 today = Date(27, September, 2019)
 Settings.instance().evaluationDate = today
-option = EuropeanOption(PlainVanillaPayoff(Option.Call, 38129.0), EuropeanExercise(Date(27, September, 2024)))
+option = EuropeanOption(PlainVanillaPayoff(Option.Call, 50000), EuropeanExercise(Date(27, September, 2024)))
 
 u = SimpleQuote(259594.0)
 r = SimpleQuote(0.0169)
