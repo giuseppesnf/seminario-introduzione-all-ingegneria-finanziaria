@@ -43,7 +43,7 @@ ys = []
 
 
 
-for x in xs:for x in xs:
+for x in xs:
     u.setValue(x)
     ys.append(call.NPV())
 
@@ -96,20 +96,18 @@ model = HestonModel(
                   QuoteHandle(u),
                   0.004, 0.1, 0.01, 0.05, -0.75))
 engine = AnalyticHestonEngine(model)
-option.setPricingEngine(engine)
-print(option.NPV())
+call.setPricingEngine(engine)
+print(call.NPV())
+put.setPricingEngine(engine)
+print(put.NPV())
 
 engine = MCEuropeanEngine(process, "PseudoRandom",
                           timeSteps=20,
                           requiredSamples=250000)
-option.setPricingEngine(engine)
-print(option.NPV())
+call.setPricingEngine(engine)
+print(call.NPV())
+put.setPricingEngine(engine)
+print(put.NPV())
 
-# ...
-
-c = (call.NPV())
-p = (option.NPV())
-A0 = 193984
-PVK = 38129
 
 # modello put call parity
