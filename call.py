@@ -4,11 +4,11 @@ import numpy as np
 
 today = Date(27, September, 2019)
 Settings.instance().evaluationDate = today
-option = EuropeanOption(PlainVanillaPayoff(Option.Call, 106404.15), EuropeanExercise(Date(27, September, 2024)))
+call = EuropeanOption(PlainVanillaPayoff(Option.Call, 106404.15), EuropeanExercise(Date(27, September, 2024)))
 put = EuropeanOption(PlainVanillaPayoff(Option.Put, 106404.15), EuropeanExercise(Date(27, September, 2024)))
 
 u = SimpleQuote(259594.0)
-r = SimpleQuote(0.0169)
+r = SimpleQuote(0.0123)
 sigma = SimpleQuote(0.2)
 
 riskFreeCurve = FlatForward(0, TARGET(), QuoteHandle(r), Actual360())
@@ -54,7 +54,7 @@ plot.show()
 
 
 f, ax = plot.subplots()
-xs = np.linspace(100.00, 40000.00)
+xs = np.linspace(10000.00, 400000.00)
 ys = []
 
 
@@ -67,6 +67,28 @@ for x in xs:
 ax.set_title("Option Value")
 _ = ax.plot(xs, ys)
 plot.show()
+
+print(c)
+print(p)
+
+A0 = 193984
+PVK = 100095
+portfolioA = c + PVK
+print(portfolioA)
+portfolioB = p + A0
+print(portfolioB)
+putcallparity = c + PVK - p - A0
+print(putcallparity)
+ValueofEquity = c
+print(ValueofEquity)
+ValueofDebt = PVK - p
+print(ValueofDebt)
+Equityandliabilities = c + PVK - p
+
+print(A0 - ValueofDebt)
+
+
+
 
 model = HestonModel(
     HestonProcess(YieldTermStructureHandle(riskFreeCurve),
