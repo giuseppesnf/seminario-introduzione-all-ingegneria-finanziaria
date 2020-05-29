@@ -87,8 +87,11 @@ Equityandliabilities = c + PVK - p
 
 print(A0 - ValueofDebt)
 
-
-
+if (portfolioA > portfolioB):
+    print("c'è arbitraggio, poichè A è sovraprezzato, dovresti vendere call e comprare put")
+    print(portfolioA > portfolioB)
+    print("c'è arbitraggio, poichè B è sovraprezzato, dovresti vendere put e comprare call")
+    print(portfolioA < portfolioB)
 
 model = HestonModel(
     HestonProcess(YieldTermStructureHandle(riskFreeCurve),
@@ -109,5 +112,4 @@ print(call.NPV())
 put.setPricingEngine(engine)
 print(put.NPV())
 
-
-# modello put call parity
+#END
